@@ -4,5 +4,5 @@ public class Carro {
 	private String chassi;
 	private String montadora;
 	private String modelo;
-	provate String tipo; // Sedan, hatch...
+	private String tipo; // Sedan, hatch...
 }
