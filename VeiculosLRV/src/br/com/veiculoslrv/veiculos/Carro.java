@@ -5,4 +5,8 @@ public class Carro {
 	private String montadora;
 	private String modelo;
 	private String tipo; // Sedan, hatch...
+	private String cor;
+	private float motorizacao;
+	private String cambio;
+	private float preco;
 }
