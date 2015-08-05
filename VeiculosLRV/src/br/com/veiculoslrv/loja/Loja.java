@@ -20,10 +20,21 @@ public class Loja {
 	}
 
 	public void buscarVeiculo(Carro carro) {
+		for (Carro veiculo : estoqueCarros) {
+			if (carro.chassi.equals(veiculo.chassi)) {
+				System.out.println("Achou!!");
+			}
 
+		}
 	}
 
 	public void buscarVeiculo(Motocicleta moto) {
+		for (Motocicleta veiculo : estoqueMotocicletas) {
+			if (moto.chassi.equals(veiculo.chassi)) {
+				System.out.println("Achou!!");
+			}
+
+		}
 
 	}
 
