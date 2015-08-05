@@ -27,12 +27,17 @@ public class Loja {
 
 	}
 
-	public void listarEstoquedeVeiculos(Carro carro) {
+	public void listarEstoquedeMotos() {
+		for (Motocicleta moto : estoqueMotocicletas) {
+			System.out.println(moto.getModelo());
+		}
 
 	}
 
-	public void listarEstoquedeVeiculos(Motocicleta moto) {
-
+	public void listarEstoquedeCarros() {
+		for (Carro carro : estoqueCarros) {
+			System.out.println(carro.getModelo());
+		}
 	}
 
 	public String getEndereco() {
