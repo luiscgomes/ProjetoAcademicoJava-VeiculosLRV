@@ -57,12 +57,25 @@ public class Loja {
 		}
 	}
 
-	public void pesquisarVeiculo(Carro carro) {
+	public Carro pesquisarVeiculo(Carro veiculo) {
+		for (Carro carro : estoqueCarros) {
+			if (carro.equals(veiculo)) {
+				return carro;
+			}
+		}
+		Carro carro = new Carro();
+		return carro;
 
 	}
 
-	public void pesquisarVeiculo(Motocicleta moto) {
-
+	public Motocicleta pesquisarVeiculo(Motocicleta veiculo) {
+		for (Motocicleta moto : estoqueMotocicletas) {
+			if (moto.equals(veiculo)) {
+				return moto;
+			}
+		}
+		Motocicleta moto = new Motocicleta();
+		return moto;
 	}
 
 	public String getEndereco() {
