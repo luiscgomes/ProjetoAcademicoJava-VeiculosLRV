@@ -19,22 +19,28 @@ public class Loja {
 		estoqueMotocicletas.add(moto);
 	}
 
-	public void buscarVeiculo(Carro carro) {
-		for (Carro veiculo : estoqueCarros) {
-			if (carro.chassi.equals(veiculo.chassi)) {
+	public Carro buscarCarro(String chassi) {
+		for (Carro carro : estoqueCarros) {
+			if (carro.chassi.equals(chassi)) {
 				System.out.println("Achou!!");
+				return carro;
 			}
 
 		}
+		Carro carro = new Carro();
+		return carro;
 	}
 
-	public void buscarVeiculo(Motocicleta moto) {
-		for (Motocicleta veiculo : estoqueMotocicletas) {
-			if (moto.chassi.equals(veiculo.chassi)) {
+	public Motocicleta buscarMoto(String chassi) {
+		for (Motocicleta moto : estoqueMotocicletas) {
+			if (moto.chassi.equals(chassi)) {
 				System.out.println("Achou!!");
+				return moto;
 			}
 
 		}
+		Motocicleta moto = new Motocicleta();
+		return moto;
 
 	}
 

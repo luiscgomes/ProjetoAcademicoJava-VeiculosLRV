@@ -23,7 +23,7 @@ public class TesteLoja {
 		
 		loja.listarEstoquedeCarros();
 		loja.listarEstoquedeMotos();
-		loja.buscarVeiculo(carro);
+		loja.buscarCarro("abcs123");
 
 	}
 
