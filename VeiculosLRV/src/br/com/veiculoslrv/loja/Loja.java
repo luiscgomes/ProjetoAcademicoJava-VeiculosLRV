@@ -11,4 +11,44 @@ public class Loja {
 	private ArrayList<Carro> estoqueCarros = new ArrayList<Carro>();
 	private ArrayList<Motocicleta> estoqueMotocicletas = new ArrayList<Motocicleta>();
 
+	public void AdicionarVeiculo(Carro carro) {
+		estoqueCarros.add(carro);
+	}
+
+	public void AdicionarVeiculo(Motocicleta moto) {
+		estoqueMotocicletas.add(moto);
+	}
+
+	public void buscarVeiculo(Carro carro) {
+
+	}
+
+	public void buscarVeiculo(Motocicleta moto) {
+
+	}
+
+	public void listarEstoquedeVeiculos(Carro carro) {
+
+	}
+
+	public void listarEstoquedeVeiculos(Motocicleta moto) {
+
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
 }
