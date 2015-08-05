@@ -57,6 +57,14 @@ public class Loja {
 		}
 	}
 
+	public void pesquisarVeiculo(Carro carro) {
+
+	}
+
+	public void pesquisarVeiculo(Motocicleta moto) {
+
+	}
+
 	public String getEndereco() {
 		return endereco;
 	}
