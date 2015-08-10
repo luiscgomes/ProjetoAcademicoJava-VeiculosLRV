@@ -8,8 +8,6 @@ public abstract class Veiculo {
 	public String cor;
 	public float preco;
 
-	
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -17,7 +15,8 @@ public abstract class Veiculo {
 		result = prime * result + ((chassi == null) ? 0 : chassi.hashCode());
 		result = prime * result + ((cor == null) ? 0 : cor.hashCode());
 		result = prime * result + ((modelo == null) ? 0 : modelo.hashCode());
-		result = prime * result + ((montadora == null) ? 0 : montadora.hashCode());
+		result = prime * result
+				+ ((montadora == null) ? 0 : montadora.hashCode());
 		result = prime * result + Float.floatToIntBits(preco);
 		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
 		return result;
@@ -61,7 +60,6 @@ public abstract class Veiculo {
 			return false;
 		return true;
 	}
-	
 
 	public String getChassi() {
 		return chassi;
@@ -108,6 +106,11 @@ public abstract class Veiculo {
 	}
 
 	public void setPreco(float preco) {
+		if (preco < 1) {
+			throw new IllegalArgumentException(
+					"Preço não pode ser menor que zero!");
+		}
+
 		this.preco = preco;
 	}
 

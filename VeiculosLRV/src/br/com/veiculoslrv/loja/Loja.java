@@ -22,7 +22,6 @@ public class Loja {
 	public Carro buscarCarro(String chassi) {
 		for (Carro carro : estoqueCarros) {
 			if (carro.chassi.equals(chassi)) {
-				System.out.println("Achou!!");
 				return carro;
 			}
 
@@ -34,7 +33,6 @@ public class Loja {
 	public Motocicleta buscarMoto(String chassi) {
 		for (Motocicleta moto : estoqueMotocicletas) {
 			if (moto.chassi.equals(chassi)) {
-				System.out.println("Achou!!");
 				return moto;
 			}
 
@@ -42,6 +40,14 @@ public class Loja {
 		Motocicleta moto = new Motocicleta();
 		return moto;
 
+	}
+
+	public ArrayList<Carro> getEstoqueCarros() {
+		return estoqueCarros;
+	}
+
+	public ArrayList<Motocicleta> getEstoqueMotocicletas() {
+		return estoqueMotocicletas;
 	}
 
 	public void listarEstoquedeMotos() {
