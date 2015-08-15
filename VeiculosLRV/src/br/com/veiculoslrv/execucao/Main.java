@@ -1,11 +1,9 @@
 package br.com.veiculoslrv.execucao;
 
-import br.com.veiculoslrv.loja.Loja;
-import br.com.veiculoslrv.veiculos.Carro;
-import br.com.veiculoslrv.veiculos.Motocicleta;
+import br.com.veiculoslrv.loja.Menu;
 
 public class Main {
 	public static void main(String[] args) {
-
+		Menu.exibir();
 	}
 }

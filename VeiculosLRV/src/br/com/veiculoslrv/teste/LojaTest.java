@@ -16,9 +16,7 @@ public class LojaTest {
 
 	@Before
 	public void criaLoja() {
-		this.loja = new Loja();
-		loja.setNome("VeiculosLRV");
-		loja.setEndereco("Rua Centro 1263, 21775-846, Rio de janeiro");
+		this.loja = new Loja("VeiculosLRV", "Rua Centro 1263, 21775-846, Rio de janeiro");
 
 		this.carro = new Carro();
 		carro.setModelo("HB20");

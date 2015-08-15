@@ -6,6 +6,12 @@ import br.com.veiculoslrv.veiculos.Carro;
 import br.com.veiculoslrv.veiculos.Motocicleta;
 
 public class Loja {
+	public Loja(String nome, String endereco) {
+		super();
+		this.nome = nome;
+		this.endereco = endereco;
+	}
+
 	private String endereco;
 	private String nome;
 	private ArrayList<Carro> estoqueCarros = new ArrayList<Carro>();
