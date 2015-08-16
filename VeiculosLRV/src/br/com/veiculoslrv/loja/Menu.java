@@ -1,6 +1,7 @@
 package br.com.veiculoslrv.loja;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import br.com.veiculoslrv.veiculos.Carro;
@@ -21,7 +22,20 @@ public final class Menu {
 		System.out.println("[ 7 ] Listar Estoque de Motos");
 		System.out.println("[ 0 ] Encerrar o Programa");
 		System.out.println("\nOpção Desejada: ");
-		return ler.nextInt();
+		try {
+			return ler.nextInt();
+		} catch (InputMismatchException e) {
+			System.out.println("\n**** Erro ****");
+			System.out.println("Digite somente numero");
+			System.out.println("**************\n");
+			return -1;
+		} catch (Exception e) {
+			System.out.println("\n**** Erro ****");
+			System.out.println("Erro desconhecido");
+			System.out.println(e.getMessage());
+			System.out.println("**************\n");
+			return -1;
+		}
 
 	}
 
