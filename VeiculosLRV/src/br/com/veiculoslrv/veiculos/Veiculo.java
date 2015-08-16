@@ -1,12 +1,12 @@
 package br.com.veiculoslrv.veiculos;
 
 public abstract class Veiculo {
-	public String chassi;
-	public String montadora;
-	public String modelo;
-	public String tipo; // Sedan, hatch...
-	public String cor;
-	public float preco;
+	private String chassi;
+	private String montadora;
+	private String modelo;
+	private String tipo; // Sedan, hatch...
+	private String cor;
+	private float preco;
 
 	@Override
 	public int hashCode() {

@@ -5,7 +5,8 @@ import br.com.veiculoslrv.loja.Menu;
 
 public class Main {
 	public static void main(String[] args) {
-		Loja loja = new Loja("VeiculosLRV", "Rua do ouro 21, 23775-594, Rio de Janeiro, Brasil");		
+		Loja loja = new Loja("VeiculosLRV", "Rua do ouro 21, 23775-594, Rio de Janeiro, Brasil");
+
 		int opcao;
 
 		do {
@@ -18,25 +19,28 @@ public class Main {
 				loja.AdicionarVeiculo(Menu.adicionarMoto());
 				break;
 			case 3:
-				//Buscar Carro
+				// Buscar Carro
 				break;
 			case 4:
-				//Buscar Moto
+				// Buscar Moto
 				break;
 			case 5:
-				//Buscar Veiculo por Chassi
+				// Buscar Veiculo por Chassi
 				break;
 			case 6:
-				//Listar Estoque de Carros
+				 Menu.listarEstoqueDeCarro(loja.getEstoqueCarros());
 				break;
 			case 7:
-				//Listar Estoque de moto
+				Menu.listarEstoqueDeMoto(loja.getEstoqueMotocicletas());
 				break;
 			default:
 				break;
+				
 			}
-			
+
 		} while (opcao != 0);
+		
+		
 
 	}
 }

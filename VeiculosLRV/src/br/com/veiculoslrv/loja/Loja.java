@@ -27,7 +27,8 @@ public class Loja {
 
 	public Carro buscarCarro(String chassi) {
 		for (Carro carro : estoqueCarros) {
-			if (carro.chassi.equals(chassi)) {
+			
+			if (carro.getChassi().equals(chassi)) {
 				return carro;
 			}
 
@@ -38,7 +39,7 @@ public class Loja {
 
 	public Motocicleta buscarMoto(String chassi) {
 		for (Motocicleta moto : estoqueMotocicletas) {
-			if (moto.chassi.equals(chassi)) {
+			if (moto.getChassi().equals(chassi)) {
 				return moto;
 			}
 

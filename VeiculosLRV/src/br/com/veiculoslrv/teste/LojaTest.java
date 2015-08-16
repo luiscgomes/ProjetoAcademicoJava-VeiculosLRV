@@ -30,10 +30,8 @@ public class LojaTest {
 
 	@Test
 	public void pesquisarVeiculoPorChassi() {
-
 		loja.AdicionarVeiculo(carro);
 		loja.AdicionarVeiculo(moto);
-
 		assertEquals(carro, loja.buscarCarro("abc123"));
 		assertEquals(moto, loja.buscarMoto("MT120"));
 

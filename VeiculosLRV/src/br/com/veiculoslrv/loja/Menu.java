@@ -1,5 +1,6 @@
 package br.com.veiculoslrv.loja;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import br.com.veiculoslrv.veiculos.Carro;
@@ -28,30 +29,31 @@ public final class Menu {
 		Carro carro = new Carro();
 		Scanner ler = new Scanner(System.in);
 
-		System.out.println("**** Adicionar Carro *****");
+		System.out.println("**** Adicionar Carro *****\n");
 		System.out.println("Informa o Chassi: ");
-		carro.chassi = ler.nextLine();
+		carro.setChassi(ler.nextLine());
 
 		System.out.println("Informa a Montadora: ");
-		carro.montadora = ler.nextLine();
+		carro.setMontadora(ler.nextLine());
 
 		System.out.println("Informa o Modelo: ");
-		carro.modelo = ler.nextLine();
+		carro.setModelo(ler.nextLine());
 
 		System.out.println("Informa o Tipo: ");
-		carro.tipo = ler.nextLine();
+		carro.setTipo(ler.nextLine());
 
-		System.out.println("Informa a Por: ");
-		carro.cor = ler.nextLine();
-
-		System.out.println("Informa o Preco: ");
-		carro.preco = ler.nextFloat();
-
-		System.out.println("Informa a Motorizacao: ");
-		carro.preco = ler.nextFloat();
+		System.out.println("Informa a Cor: ");
+		carro.setCor(ler.nextLine());
 
 		System.out.println("Informa o Cambio: ");
-		carro.cor = ler.nextLine();
+		carro.setCambio(ler.nextLine());
+
+		System.out.println("Informa o Preco: ");
+		carro.setPreco(ler.nextFloat());
+
+		System.out.println("Informa a Motorizacao: ");
+		carro.setMotorizacao(ler.nextFloat());
+
 		return carro;
 
 	}
@@ -61,24 +63,24 @@ public final class Menu {
 
 		Scanner ler = new Scanner(System.in);
 
-		System.out.println("**** Adicionar Carro *****");
+		System.out.println("**** Adicionar Moto *****");
 		System.out.println("Informa o Chassi: ");
-		moto.chassi = ler.nextLine();
+		moto.setChassi(ler.nextLine());
 
 		System.out.println("Informa a Montadora: ");
-		moto.montadora = ler.nextLine();
+		moto.setMontadora(ler.nextLine());
 
 		System.out.println("Informa o Modelo: ");
-		moto.modelo = ler.nextLine();
+		moto.setModelo(ler.nextLine());
 
 		System.out.println("Informa o Tipo: ");
-		moto.tipo = ler.nextLine();
+		moto.setTipo(ler.nextLine());
 
 		System.out.println("Informa a Por: ");
-		moto.cor = ler.nextLine();
+		moto.setCor(ler.nextLine());
 
 		System.out.println("Informa o Preco: ");
-		moto.preco = ler.nextFloat();
+		moto.setPreco(ler.nextFloat());
 
 		System.out.println("Informa a Cilindrada: ");
 		moto.setCilindrada(ler.nextInt());
@@ -87,6 +89,52 @@ public final class Menu {
 		moto.setCapTanque(ler.nextInt());
 
 		return moto;
+	}
+
+	public static void listarEstoqueDeMoto(ArrayList<Motocicleta> estoqueMoto) {
+
+		System.out.println("**** Listar estoque de Moto *****");
+		System.out.println("*********************************\n");
+		if (estoqueMoto.isEmpty()) {
+			System.out.println("****Estoque Vazio****\n");
+		} else {
+			for (Motocicleta moto : estoqueMoto) {
+				System.out.println("Chassi: " + moto.getChassi());
+				System.out.println("Montadora: " + moto.getMontadora());
+				System.out.println("Modelo: " + moto.getModelo());
+				System.out.println("Tipo: " + moto.getTipo());
+				System.out.println("Cor: " + moto.getCor());
+				System.out.println("Preco: " + moto.getPreco());
+				System.out.println("Cilindrada: " + moto.getCilindrada());
+				System.out.println("Capacidade do Tanque: " + moto.getCapTanque());
+				System.out.println("\n*********************************");
+			}
+		}
+		System.out.println("*********************************");
+
+	}
+
+	public static void listarEstoqueDeCarro(ArrayList<Carro> estoqueCarros) {
+		System.out.println("**** Listar estoque de Moto *****");
+		System.out.println("*********************************\n");
+		if (estoqueCarros.isEmpty()) {
+			System.out.println("****Estoque Vazio****\n");
+		} else {
+			for (Carro carro : estoqueCarros) {
+				System.out.println("Chassi: " + carro.getChassi());
+				System.out.println("Montadora: " + carro.getMontadora());
+				System.out.println("Modelo: " + carro.getModelo());
+				System.out.println("Tipo: " + carro.getTipo());
+				System.out.println("Cor: " + carro.getCor());
+				System.out.println("Preco: " + carro.getPreco());
+				System.out.println("Motorizacao: " + carro.getMotorizacao());
+				System.out.println("Cambio: " + carro.getCambio());
+				System.out.println("\n*********************************");
+
+			}
+		}
+		System.out.println("\n*********************************");
+
 	}
 
 }
