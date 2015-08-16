@@ -11,6 +11,7 @@ import br.com.veiculoslrv.veiculos.Veiculo;
 public final class Menu {
 	public static int exibirPrincipal() {
 		Scanner ler = new Scanner(System.in);
+		int opcao;
 
 		System.out.println("**** Menu Principal *****");
 		System.out.println("[ 1 ] Adicionar Carro");
@@ -22,53 +23,64 @@ public final class Menu {
 		System.out.println("[ 7 ] Listar Estoque de Motos");
 		System.out.println("[ 0 ] Encerrar o Programa");
 		System.out.println("\nOpção Desejada: ");
+
 		try {
-			return ler.nextInt();
+			opcao = ler.nextInt();
+			if (opcao < 0 || opcao > 7) {
+				throw new IllegalArgumentException("Somente numero possitivo menor que 8");
+			}
+			return opcao;
 		} catch (InputMismatchException e) {
-			System.out.println("\n**** Erro ****");
-			System.out.println("Digite somente numero");
-			System.out.println("**************\n");
-			return -1;
+			return erroMenu("Digite somente numero");
+		} catch (IllegalArgumentException e) {
+			return erroMenu(e.getMessage());
 		} catch (Exception e) {
-			System.out.println("\n**** Erro ****");
-			System.out.println("Erro desconhecido");
 			System.out.println(e.getMessage());
-			System.out.println("**************\n");
-			return -1;
+			return erroMenu("Erro desconhecido");
 		}
 
+	}
+
+	private static int erroMenu(String msn) {
+		System.out.println("\n**** Erro ****");
+		System.out.println(msn);
+		System.out.println("**************\n");
+		return -1;
 	}
 
 	public static Carro adicionarCarro() {
 		Carro carro = new Carro();
 		Scanner ler = new Scanner(System.in);
+		try {
+			System.out.println("**** Adicionar Carro *****\n");
+			System.out.println("Informa o Chassi: ");
+			carro.setChassi(ler.nextLine());
 
-		System.out.println("**** Adicionar Carro *****\n");
-		System.out.println("Informa o Chassi: ");
-		carro.setChassi(ler.nextLine());
+			System.out.println("Informa a Montadora: ");
+			carro.setMontadora(ler.nextLine());
 
-		System.out.println("Informa a Montadora: ");
-		carro.setMontadora(ler.nextLine());
+			System.out.println("Informa o Modelo: ");
+			carro.setModelo(ler.nextLine());
 
-		System.out.println("Informa o Modelo: ");
-		carro.setModelo(ler.nextLine());
+			System.out.println("Informa o Tipo: ");
+			carro.setTipo(ler.nextLine());
 
-		System.out.println("Informa o Tipo: ");
-		carro.setTipo(ler.nextLine());
+			System.out.println("Informa a Cor: ");
+			carro.setCor(ler.nextLine());
 
-		System.out.println("Informa a Cor: ");
-		carro.setCor(ler.nextLine());
+			System.out.println("Informa o Cambio: ");
+			carro.setCambio(ler.nextLine());
 
-		System.out.println("Informa o Cambio: ");
-		carro.setCambio(ler.nextLine());
+			System.out.println("Informa o Preco: ");
+			carro.setPreco(ler.nextFloat());
 
-		System.out.println("Informa o Preco: ");
-		carro.setPreco(ler.nextFloat());
-
-		System.out.println("Informa a Motorizacao: ");
-		carro.setMotorizacao(ler.nextFloat());
-
-		return carro;
+			System.out.println("Informa a Motorizacao: ");
+			carro.setMotorizacao(ler.nextFloat());
+			return carro;
+		} catch (InputMismatchException e) {
+			erroMenu("Somente numero");
+			return null;
+		}
 
 	}
 
