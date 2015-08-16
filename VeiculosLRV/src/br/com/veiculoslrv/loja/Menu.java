@@ -3,6 +3,7 @@ package br.com.veiculoslrv.loja;
 import java.util.Scanner;
 
 import br.com.veiculoslrv.veiculos.Carro;
+import br.com.veiculoslrv.veiculos.Motocicleta;
 import br.com.veiculoslrv.veiculos.Veiculo;
 
 public final class Menu {
@@ -54,7 +55,38 @@ public final class Menu {
 		return carro;
 
 	}
-	
-	
+
+	public static Motocicleta adicionarMoto() {
+		Motocicleta moto = new Motocicleta();
+
+		Scanner ler = new Scanner(System.in);
+
+		System.out.println("**** Adicionar Carro *****");
+		System.out.println("Informa o Chassi: ");
+		moto.chassi = ler.nextLine();
+
+		System.out.println("Informa a Montadora: ");
+		moto.montadora = ler.nextLine();
+
+		System.out.println("Informa o Modelo: ");
+		moto.modelo = ler.nextLine();
+
+		System.out.println("Informa o Tipo: ");
+		moto.tipo = ler.nextLine();
+
+		System.out.println("Informa a Por: ");
+		moto.cor = ler.nextLine();
+
+		System.out.println("Informa o Preco: ");
+		moto.preco = ler.nextFloat();
+
+		System.out.println("Informa a Cilindrada: ");
+		moto.setCilindrada(ler.nextInt());
+
+		System.out.println("Informa a Capacidade do Tanque: ");
+		moto.setCapTanque(ler.nextInt());
+
+		return moto;
+	}
 
 }
