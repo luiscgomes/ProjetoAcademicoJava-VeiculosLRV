@@ -7,7 +7,8 @@ public abstract class Veiculo {
 	private String tipo; // Sedan, hatch...
 	private String cor;
 	private float preco;
-
+	private Especializacao especilizacao;
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
