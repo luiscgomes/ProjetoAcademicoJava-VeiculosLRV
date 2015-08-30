@@ -7,8 +7,16 @@ public abstract class Veiculo {
 	private String tipo; // Sedan, hatch...
 	private String cor;
 	private float preco;
-	private Especializacao especilizacao;
+	private Especificacao especificacao;
 	
+	public Especificacao getEspecificacao() {
+		return especificacao;
+	}
+
+	public void setEspecificacao(Especificacao especificacao) {
+		this.especificacao = especificacao;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

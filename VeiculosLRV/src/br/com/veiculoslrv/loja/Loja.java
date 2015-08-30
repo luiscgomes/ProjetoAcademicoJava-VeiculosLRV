@@ -2,93 +2,50 @@ package br.com.veiculoslrv.loja;
 
 import java.util.ArrayList;
 
-import br.com.veiculoslrv.veiculos.Carro;
-import br.com.veiculoslrv.veiculos.Motocicleta;
+import br.com.veiculoslrv.veiculos.Especificacao;
+import br.com.veiculoslrv.veiculos.TipoVeiculo;
+import br.com.veiculoslrv.veiculos.Veiculo;
 
 public class Loja {
+	private String endereco;
+	private String nome;
+	private ArrayList<Veiculo> estoqueVeiculos = new ArrayList<Veiculo>();
+	
+	
 	public Loja(String nome, String endereco) {
 		super();
 		this.nome = nome;
 		this.endereco = endereco;
-	}
+	}	
 
-	private String endereco;
-	private String nome;
-	private ArrayList<Carro> estoqueCarros = new ArrayList<Carro>();
-	private ArrayList<Motocicleta> estoqueMotocicletas = new ArrayList<Motocicleta>();
-
-	public void AdicionarVeiculo(Carro carro) {
-		estoqueCarros.add(carro);
-	}
-
-	public void AdicionarVeiculo(Motocicleta moto) {
-		estoqueMotocicletas.add(moto);
-	}
-
-	public Carro buscarCarro(String chassi) {
-		for (Carro carro : estoqueCarros) {
-			
-			if (carro.getChassi().equals(chassi)) {
-				return carro;
+	public void AdicionarVeiculo(Veiculo veiculo) {
+		estoqueVeiculos.add(veiculo);
+	}	
+	
+	public Veiculo pesquisarVeiculo(Especificacao especificacao) {
+		for (Veiculo veiculo : estoqueVeiculos) {
+			if (veiculo.getEspecificacao().equals(especificacao)) {
+				return veiculo;
 			}
-
 		}
-		Carro carro = new Carro();
-		return carro;
+		
+		return null;
 	}
-
-	public Motocicleta buscarMoto(String chassi) {
-		for (Motocicleta moto : estoqueMotocicletas) {
-			if (moto.getChassi().equals(chassi)) {
-				return moto;
-			}
-
-		}
-		Motocicleta moto = new Motocicleta();
-		return moto;
-
-	}
-
-	public ArrayList<Carro> getEstoqueCarros() {
-		return estoqueCarros;
-	}
-
-	public ArrayList<Motocicleta> getEstoqueMotocicletas() {
-		return estoqueMotocicletas;
-	}
-
-	public void listarEstoquedeMotos() {
-		for (Motocicleta moto : estoqueMotocicletas) {
-			System.out.println(moto.getModelo());
-		}
-
-	}
-
+	
 	public void listarEstoquedeCarros() {
-		for (Carro carro : estoqueCarros) {
-			System.out.println(carro.getModelo());
-		}
+		listarEstoque(TipoVeiculo.carro);
 	}
-
-	public Carro pesquisarVeiculo(Carro veiculo) {
-		for (Carro carro : estoqueCarros) {
-			if (carro.equals(veiculo)) {
-				return carro;
-			}
-		}
-		Carro carro = new Carro();
-		return carro;
-
+	
+	public void listarEstoquedeMotocicletas() {
+		listarEstoque(TipoVeiculo.motocicleta);
 	}
-
-	public Motocicleta pesquisarVeiculo(Motocicleta veiculo) {
-		for (Motocicleta moto : estoqueMotocicletas) {
-			if (moto.equals(veiculo)) {
-				return moto;
-			}
+	
+	private void listarEstoque(TipoVeiculo tipoVeiculo) {
+		for (Veiculo veiculo : estoqueVeiculos) {
+			if (veiculo.getEspecificacao().getTipoVeiculo() == tipoVeiculo) {
+				System.out.println(veiculo.toString());
+			}			
 		}
-		Motocicleta moto = new Motocicleta();
-		return moto;
 	}
 
 	public String getEndereco() {
