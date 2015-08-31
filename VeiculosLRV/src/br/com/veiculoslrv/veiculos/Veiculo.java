@@ -1,6 +1,6 @@
 package br.com.veiculoslrv.veiculos;
 
-public abstract class Veiculo {
+public class Veiculo {
 	private String chassi;
 	private String montadora;
 	private String modelo;
@@ -117,7 +117,7 @@ public abstract class Veiculo {
 	public void setPreco(float preco) {
 		if (preco < 1) {
 			throw new IllegalArgumentException(
-					"Preço não pode ser menor que zero!");
+					"Preï¿½o nï¿½o pode ser menor que zero!");
 		}
 
 		this.preco = preco;
