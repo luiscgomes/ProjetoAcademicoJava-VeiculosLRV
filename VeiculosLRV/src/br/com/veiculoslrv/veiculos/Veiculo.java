@@ -1,6 +1,9 @@
 package br.com.veiculoslrv.veiculos;
 
-public class Veiculo {
+import br.com.veiculoslrv.veiculo.atributos.CarroAtributo;
+import br.com.veiculoslrv.veiculo.atributos.MotoAtributo;
+
+public abstract class Veiculo {
 	private String chassi;
 	private String montadora;
 	private String modelo;
@@ -8,16 +11,14 @@ public class Veiculo {
 	private String cor;
 	private double preco;
 	private Especificacao especificacao;
-	
-	public Especificacao getEspecificacao() {
+
+	protected Especificacao getEspecificacao() {
 		return especificacao;
 	}
 
-	public void setEspecificacao(Especificacao especificacao) {
+	protected void setEspecificacao(Especificacao especificacao) {
 		this.especificacao = especificacao;
 	}
-
-
 
 	public String getChassi() {
 		return chassi;
@@ -65,11 +66,41 @@ public class Veiculo {
 
 	public void setPreco(double preco) {
 		if (preco < 1) {
-			throw new IllegalArgumentException(
-					"Preï¿½o nï¿½o pode ser menor que zero!");
+			throw new IllegalArgumentException("Preço não pode ser menor que zero!");
 		}
 
 		this.preco = preco;
+	}
+
+	public void setAtributo(CarroAtributo nomeAtributo, String atributo) {
+		especificacao.getEspecificacoes().put(nomeAtributo.name(), atributo);
+	}
+
+	public String getAtributo(CarroAtributo nomeAtributo) {
+		if (!especificacao.getEspecificacoes().containsKey(nomeAtributo.name())) {
+			throw new IllegalArgumentException("Atributo Invalido");
+		}
+		return especificacao.getEspecificacoes().get(nomeAtributo.name());
+
+	}
+	
+	public void setAtributo(MotoAtributo nomeAtributo, String atributo) {
+		especificacao.getEspecificacoes().put(nomeAtributo.name(), atributo);
+	}
+
+	public String getAtributo(MotoAtributo nomeAtributo) {
+		if (!especificacao.getEspecificacoes().containsKey(nomeAtributo.name())) {
+			throw new IllegalArgumentException("Atributo Invalido");
+		}
+		return especificacao.getEspecificacoes().get(nomeAtributo.name());
+
+	}
+	
+	
+
+	public TipoVeiculo getTipoVeiculo() {
+		return especificacao.getTipoVeiculo();
+
 	}
 
 }

@@ -15,7 +15,7 @@ public class VeiculoTest {
 
 	@Test
 	public void deveCriarUmCarro() {
-		Veiculo veiculo = new Veiculo();
+		Veiculo carro = new Veiculo();
 
 		Map<String, String> atributo = new HashMap<String, String>();
 		atributo.put("Cambio", "Automatico");
@@ -26,15 +26,15 @@ public class VeiculoTest {
 		especificacao.setEspecificacoes(atributo);
 
 		//Cria um veiculo
-		veiculo.setEspecificacao(especificacao);
-		veiculo.setModelo("HBS");
-		veiculo.setChassi("12323sd");
-		veiculo.setCor("Azul");
-		veiculo.setMontadora("hyundai");
-		veiculo.setPreco(60000);
-		veiculo.setTipo("Sedan");
+		carro.setEspecificacao(especificacao);
+		carro.setModelo("HBS");
+		carro.setChassi("12323sd");
+		carro.setCor("Azul");
+		carro.setMontadora("hyundai");
+		carro.setPreco(60000);
+		carro.setTipo("Sedan");
 		
-		especificacao = veiculo.getEspecificacao();
+		especificacao = carro.getEspecificacao();
 
 		// Tipo do veiculo deve ser carro
 		assertTrue(especificacao.getTipoVeiculo() == TipoVeiculo.carro);
@@ -42,12 +42,12 @@ public class VeiculoTest {
 		assertTrue(atributo.containsKey("Motorizacao"));
 
 		assertEquals("Automatico", atributo.get("Cambio"));
-		assertEquals("HBS", veiculo.getModelo());
-		assertEquals("12323sd", veiculo.getChassi());
-		assertEquals("Azul", veiculo.getCor());
-		assertEquals("hyundai", veiculo.getMontadora());
-		assertEquals(60000, veiculo.getPreco(),000.1);		
-		assertEquals("Sedan", veiculo.getTipo());		
+		assertEquals("HBS", carro.getModelo());
+		assertEquals("12323sd", carro.getChassi());
+		assertEquals("Azul", carro.getCor());
+		assertEquals("hyundai", carro.getMontadora());
+		assertEquals(60000, carro.getPreco(),000.1);		
+		assertEquals("Sedan", carro.getTipo());		
 
 	}
 
