@@ -1,6 +1,6 @@
 package br.com.veiculoslrv.veiculo.atributos;
 
-public enum CarroAtributo {
+public enum CarroAtributo implements Atributo {
 
 	Cambio("cambio"), Motorizacao("motorizacao");
 
