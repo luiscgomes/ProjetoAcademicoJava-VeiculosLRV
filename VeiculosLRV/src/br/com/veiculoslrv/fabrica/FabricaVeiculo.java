@@ -7,11 +7,9 @@ import br.com.veiculoslrv.veiculos.Veiculo;
 public class FabricaVeiculo {
 
 	public Veiculo criarVeiculo(TipoVeiculo tipoVeiculo) {
-		Veiculo veiculo = new Veiculo();
-		Especificacao especificacao = new Especificacao();
-		
-		especificacao.setTipoVeiculo(tipoVeiculo);
-		
+
+		Especificacao especificacao = new Especificacao(tipoVeiculo);		
+		Veiculo veiculo = new Veiculo(especificacao);
 		return veiculo;
 	}
 }

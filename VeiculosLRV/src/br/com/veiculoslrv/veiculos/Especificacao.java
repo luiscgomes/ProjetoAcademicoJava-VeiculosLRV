@@ -5,8 +5,13 @@ import java.util.Map;
 import br.com.veiculoslrv.veiculo.atributos.Atributo;
 
 public class Especificacao {
-	Map<Atributo, String> especificacoes;
-	TipoVeiculo tipoVeiculo;
+	private Map<Atributo, String> especificacoes;
+	private TipoVeiculo tipoVeiculo;
+
+	public Especificacao(TipoVeiculo tipoVeiculo) {
+
+		this.tipoVeiculo = tipoVeiculo;
+	}
 
 	public Map<Atributo, String> getEspecificacoes() {
 		return especificacoes;
@@ -18,10 +23,6 @@ public class Especificacao {
 
 	public TipoVeiculo getTipoVeiculo() {
 		return tipoVeiculo;
-	}
-
-	public void setTipoVeiculo(TipoVeiculo tipoVeiculo) {
-		this.tipoVeiculo = tipoVeiculo;
 	}
 
 }

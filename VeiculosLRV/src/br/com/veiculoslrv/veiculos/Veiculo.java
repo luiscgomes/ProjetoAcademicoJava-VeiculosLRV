@@ -1,8 +1,11 @@
 package br.com.veiculoslrv.veiculos;
 
 import java.io.Serializable;
+import java.util.Map;
 
-public class Veiculo implements Serializable {	
+import br.com.veiculoslrv.veiculo.atributos.Atributo;
+
+public class Veiculo implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String chassi;
 	private String montadora;
@@ -12,12 +15,20 @@ public class Veiculo implements Serializable {
 	private double preco;
 	private Especificacao especificacao;
 
-	public Especificacao getEspecificacao() {
-		return especificacao;
+	public Veiculo(Especificacao especificacao) {		
+		this.especificacao = especificacao;
 	}
 
-	public void setEspecificacao(Especificacao especificacao) {
-		this.especificacao = especificacao;
+	public Map<Atributo, String> getEspecificacoes() {
+		return this.especificacao.getEspecificacoes();
+	}
+
+	public void setEspecificacoes(Map<Atributo, String> especificacoes) {
+		this.especificacao.setEspecificacoes(especificacoes); 
+	}
+
+	public TipoVeiculo getTipoVeiculo() {
+		return this.especificacao.getTipoVeiculo();
 	}
 
 	public String getChassi() {
