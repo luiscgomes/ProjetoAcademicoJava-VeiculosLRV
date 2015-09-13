@@ -2,10 +2,8 @@ package br.com.veiculoslrv.veiculos;
 
 import java.io.Serializable;
 
-import br.com.veiculoslrv.veiculo.atributos.CarroAtributo;
-import br.com.veiculoslrv.veiculo.atributos.MotoAtributo;
-
-public class Veiculo implements Serializable {
+public class Veiculo implements Serializable {	
+	private static final long serialVersionUID = 1L;
 	private String chassi;
 	private String montadora;
 	private String modelo;
@@ -73,36 +71,4 @@ public class Veiculo implements Serializable {
 
 		this.preco = preco;
 	}
-
-	public void setAtributo(CarroAtributo nomeAtributo, String atributo) {
-		especificacao.getEspecificacoes().put(nomeAtributo.name(), atributo);
-	}
-
-	public String getAtributo(CarroAtributo nomeAtributo) {
-		if (!especificacao.getEspecificacoes().containsKey(nomeAtributo.name())) {
-			throw new IllegalArgumentException("Atributo Invalido");
-		}
-		return especificacao.getEspecificacoes().get(nomeAtributo.name());
-
-	}
-	
-	public void setAtributo(MotoAtributo nomeAtributo, String atributo) {
-		especificacao.getEspecificacoes().put(nomeAtributo.name(), atributo);
-	}
-
-	public String getAtributo(MotoAtributo nomeAtributo) {
-		if (!especificacao.getEspecificacoes().containsKey(nomeAtributo.name())) {
-			throw new IllegalArgumentException("Atributo Invalido");
-		}
-		return especificacao.getEspecificacoes().get(nomeAtributo.name());
-
-	}
-	
-	
-
-	public TipoVeiculo getTipoVeiculo() {
-		return especificacao.getTipoVeiculo();
-
-	}
-
 }

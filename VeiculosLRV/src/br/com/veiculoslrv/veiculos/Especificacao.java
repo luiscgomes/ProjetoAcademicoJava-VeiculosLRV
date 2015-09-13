@@ -2,15 +2,17 @@ package br.com.veiculoslrv.veiculos;
 
 import java.util.Map;
 
+import br.com.veiculoslrv.veiculo.atributos.Atributo;
+
 public class Especificacao {
-	Map<String, String> especificacoes;
+	Map<Atributo, String> especificacoes;
 	TipoVeiculo tipoVeiculo;
 
-	public Map<String, String> getEspecificacoes() {
+	public Map<Atributo, String> getEspecificacoes() {
 		return especificacoes;
 	}
 
-	public void setEspecificacoes(Map<String, String> especificacoes) {
+	public void setEspecificacoes(Map<Atributo, String> especificacoes) {
 		this.especificacoes = especificacoes;
 	}
 
