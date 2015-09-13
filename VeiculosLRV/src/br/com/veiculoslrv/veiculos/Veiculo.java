@@ -1,9 +1,11 @@
 package br.com.veiculoslrv.veiculos;
 
+import java.io.Serializable;
+
 import br.com.veiculoslrv.veiculo.atributos.CarroAtributo;
 import br.com.veiculoslrv.veiculo.atributos.MotoAtributo;
 
-public abstract class Veiculo {
+public class Veiculo implements Serializable {
 	private String chassi;
 	private String montadora;
 	private String modelo;
@@ -12,11 +14,11 @@ public abstract class Veiculo {
 	private double preco;
 	private Especificacao especificacao;
 
-	protected Especificacao getEspecificacao() {
+	public Especificacao getEspecificacao() {
 		return especificacao;
 	}
 
-	protected void setEspecificacao(Especificacao especificacao) {
+	public void setEspecificacao(Especificacao especificacao) {
 		this.especificacao = especificacao;
 	}
 
