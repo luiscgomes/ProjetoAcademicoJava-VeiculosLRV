@@ -24,5 +24,4 @@ public class Especificacao {
 	public TipoVeiculo getTipoVeiculo() {
 		return tipoVeiculo;
 	}
-
 }

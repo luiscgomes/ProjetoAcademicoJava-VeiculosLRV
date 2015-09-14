@@ -6,7 +6,7 @@ import br.com.veiculoslrv.veiculos.Veiculo;
 
 public class FabricaVeiculo {
 
-	public Veiculo criarVeiculo(TipoVeiculo tipoVeiculo) {
+	public static Veiculo criarVeiculo(TipoVeiculo tipoVeiculo) {
 
 		Especificacao especificacao = new Especificacao(tipoVeiculo);		
 		Veiculo veiculo = new Veiculo(especificacao);

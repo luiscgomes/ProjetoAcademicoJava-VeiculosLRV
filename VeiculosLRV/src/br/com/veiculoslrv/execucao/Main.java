@@ -1,7 +1,6 @@
 package br.com.veiculoslrv.execucao;
 
 import br.com.veiculoslrv.loja.Loja;
-import br.com.veiculoslrv.loja.Menu;
 import br.com.veiculoslrv.veiculos.Carro;
 
 public class Main {

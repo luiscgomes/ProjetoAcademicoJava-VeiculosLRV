@@ -1,0 +1,177 @@
+package br.com.veiculoslrv.execucao;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import java.util.Map;
+
+import br.com.veiculoslrv.fabrica.FabricaVeiculo;
+import br.com.veiculoslrv.loja.Loja;
+import br.com.veiculoslrv.veiculo.atributos.Atributo;
+import br.com.veiculoslrv.veiculo.atributos.CarroAtributo;
+import br.com.veiculoslrv.veiculo.atributos.MotoAtributo;
+import br.com.veiculoslrv.veiculos.Especificacao;
+import br.com.veiculoslrv.veiculos.TipoVeiculo;
+import br.com.veiculoslrv.veiculos.Veiculo;
+
+public final class Menu {
+	public static int exibirPrincipal() {
+		Scanner ler = new Scanner(System.in);
+		int opcao;
+
+		System.out.println("**** Menu Principal *****");
+		System.out.println("[ 1 ] Adicionar Carro");
+		System.out.println("[ 2 ] Adicionar Moto");
+		System.out.println("[ 3 ] Pesquisar Carro");
+		System.out.println("[ 4 ] Pesquisar Moto");
+		System.out.println("[ 5 ] Buscar Veiculo por Chassi");
+		System.out.println("[ 6 ] Listar Estoque de Carros");
+		System.out.println("[ 7 ] Listar Estoque de Motos");
+		System.out.println("[ 0 ] Encerrar o Programa");
+		System.out.println("\nOpção Desejada: ");
+
+		try {
+			opcao = ler.nextInt();
+			if (opcao < 0 || opcao > 7) {
+				throw new IllegalArgumentException("Somente numero possitivo menor que 8");
+			}
+			return opcao;
+		} catch (InputMismatchException e) {
+			return erroMenu("Digite somente numero");
+		} catch (IllegalArgumentException e) {
+			return erroMenu(e.getMessage());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return erroMenu("Erro desconhecido");
+		}
+
+	}
+
+	private static int erroMenu(String msn) {
+		System.out.println("\n**** Erro ****");
+		System.out.println(msn);
+		System.out.println("**************\n");
+		return -1;
+	}
+
+	public static Veiculo adicionarCarro(Loja loja) {
+		Veiculo carro = FabricaVeiculo.criarVeiculo(TipoVeiculo.carro);
+		Map<Atributo, String> especificacoes = new HashMap<Atributo, String>();
+		Scanner ler = new Scanner(System.in);
+		try {
+			System.out.println("**** Adicionar Carro *****\n");
+
+			carro = recuperaDadosCarro(carro, especificacoes);
+			
+			loja.AdicionarVeiculo(carro);
+			
+			return carro;
+		} catch (InputMismatchException e) {
+			erroMenu("Informe o valor correto");
+			return null;
+		}
+
+	}
+	
+	public static Veiculo adicionarMoto(Loja loja) {
+		Veiculo moto = FabricaVeiculo.criarVeiculo(TipoVeiculo.motocicleta);
+		Map<Atributo, String> especificacoes = new HashMap<Atributo, String>();
+		
+		try {
+			System.out.println("**** Adicionar Moto *****");	
+
+			moto = recuperaDadosMoto(moto, especificacoes);
+						
+			loja.AdicionarVeiculo(moto);
+
+			return moto;
+		} catch (InputMismatchException e) {
+			erroMenu("Informe o valor correto");
+			return null;
+		}
+
+	}
+	
+	public static Veiculo pesquisaCarro(Loja loja) {
+		Veiculo carro = FabricaVeiculo.criarVeiculo(TipoVeiculo.carro);		
+		Map<Atributo, String> especificacoes = new HashMap<Atributo, String>();
+		
+		carro = recuperaDadosCarro(carro, especificacoes);
+		
+		return loja.pesquisarVeiculo(carro.getEspecificacao());
+	}
+	
+	public static Veiculo pesquisaMoto(Loja loja) {
+		Veiculo moto = FabricaVeiculo.criarVeiculo(TipoVeiculo.motocicleta);		
+		Map<Atributo, String> especificacoes = new HashMap<Atributo, String>();
+		
+		moto = recuperaDadosCarro(moto, especificacoes);
+		
+		return loja.pesquisarVeiculo(moto.getEspecificacao());
+	}
+	
+	public static void listarEstoqueDeCarro(Loja loja) {
+		loja.listarEstoquedeCarros();
+	}
+	
+	public static void listarEstoqueDeMoto(Loja loja) {
+		loja.listarEstoquedeMotocicletas();
+	}
+	
+	private static Veiculo recuperaDados(Veiculo veiculo) {
+		Scanner ler = new Scanner(System.in);
+		
+		System.out.println("Informa o Chassi: ");
+		veiculo.setChassi(ler.nextLine());
+
+		System.out.println("Informa a Montadora: ");
+		veiculo.setMontadora(ler.nextLine());
+
+		System.out.println("Informa o Modelo: ");
+		veiculo.setModelo(ler.nextLine());
+
+		System.out.println("Informa o Tipo: ");
+		veiculo.setTipo(ler.nextLine());
+
+		System.out.println("Informa a Por: ");
+		veiculo.setCor(ler.nextLine());
+
+		System.out.println("Informa o Preco: ");
+		veiculo.setPreco(ler.nextFloat());
+		
+		return veiculo;
+	}
+	
+	private static Veiculo recuperaDadosCarro(Veiculo carro, Map<Atributo, String> especificacoes) {
+		Scanner ler = new Scanner(System.in);
+		
+		carro = recuperaDados(carro);
+		
+		System.out.println("Informa o Cambio: ");
+		especificacoes.put(CarroAtributo.Cambio, String.valueOf(ler.nextInt()));
+
+		System.out.println("Informa a Motorizacao: ");
+		especificacoes.put(CarroAtributo.Motorizacao, ler.nextLine());
+
+		carro.getEspecificacao().setEspecificacoes(especificacoes);
+		
+		return carro;
+	}
+	
+	private static Veiculo recuperaDadosMoto(Veiculo moto, Map<Atributo, String> especificacoes) {
+		Scanner ler = new Scanner(System.in);
+		
+		moto = recuperaDados(moto);
+	
+		System.out.println("Informa a Cilindrada: ");
+		especificacoes.put(MotoAtributo.Cilindrada, String.valueOf(ler.nextInt()));
+
+		System.out.println("Informa a Capacidade do Tanque: ");
+		especificacoes.put(MotoAtributo.CapacidadeTanque, String.valueOf(ler.nextInt()));
+		
+		moto.getEspecificacao().setEspecificacoes(especificacoes);
+		
+		return moto;
+	}
+}

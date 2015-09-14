@@ -3,7 +3,9 @@ package br.com.veiculoslrv.loja;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.veiculoslrv.execucao.Motocicleta;
 import br.com.veiculoslrv.util.ArquivoUtil;
+import br.com.veiculoslrv.veiculo.atributos.Atributo;
 import br.com.veiculoslrv.veiculos.Especificacao;
 import br.com.veiculoslrv.veiculos.TipoVeiculo;
 import br.com.veiculoslrv.veiculos.Veiculo;
@@ -53,19 +55,36 @@ public class Loja {
 	}
 	
 	public void listarEstoquedeCarros() {
+		System.out.println("**** Listar estoque de Carros *****");
 		listarEstoque(TipoVeiculo.carro);
 	}
 	
 	public void listarEstoquedeMotocicletas() {
+		System.out.println("**** Listar estoque de Motos *****");
 		listarEstoque(TipoVeiculo.motocicleta);
 	}
 	
 	private void listarEstoque(TipoVeiculo tipoVeiculo) {
-		for (Veiculo veiculo : estoqueVeiculos) {
-			if (veiculo.getEspecificacao().getTipoVeiculo() == tipoVeiculo) {
-				System.out.println(veiculo.toString());
-			}			
+		if (estoqueVeiculos.isEmpty()) {
+			System.out.println("****Estoque Vazio****\n");
+		} else {
+			for (Veiculo veiculo : estoqueVeiculos) {
+				if (veiculo.getEspecificacao().getTipoVeiculo() == tipoVeiculo) {				
+					System.out.println("*********************************\n");
+					System.out.println("Chassi: " + veiculo.getChassi());
+					System.out.println("Montadora: " + veiculo.getMontadora());
+					System.out.println("Modelo: " + veiculo.getModelo());
+					System.out.println("Tipo: " + veiculo.getTipo());
+					System.out.println("Cor: " + veiculo.getCor());
+					System.out.println("Preco: " + veiculo.getPreco());
+					for (Atributo atributo : veiculo.getEspecificacao().getEspecificacoes().keySet()) {
+						System.out.println(atributo + ": " + veiculo.getEspecificacao().getEspecificacoes().get(atributo));
+					}
+					System.out.println("\n*********************************");								
+				}			
+			}
 		}
+		System.out.println("*********************************");	
 	}
 
 	public String getEndereco() {
