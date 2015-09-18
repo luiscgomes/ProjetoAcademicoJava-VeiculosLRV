@@ -1,7 +1,7 @@
 package br.com.veiculoslrv.execucao;
 
 import br.com.veiculoslrv.loja.Loja;
-import br.com.veiculoslrv.veiculos.Carro;
+import br.com.veiculoslrv.veiculos.Veiculo;
 
 public class Main {
 	public static void main(String[] args) {
@@ -13,13 +13,18 @@ public class Main {
 			opcao = Menu.exibirPrincipal();
 			switch (opcao) {
 			case 1:
-				Carro carro = Menu.adicionarCarro();
+				// Adicionar Carro
+				Veiculo carro = Menu.adicionarCarro();
 				if (carro != null) {
 					loja.AdicionarVeiculo(carro);
 				}
 				break;
 			case 2:
-				loja.AdicionarVeiculo(Menu.adicionarMoto());
+				// Adicionar Moto
+				Veiculo moto = Menu.adicionarMoto();
+				if (moto != null) {
+					loja.AdicionarVeiculo(moto);
+				}
 				break;
 			case 3:
 				// Buscar Carro
@@ -31,10 +36,10 @@ public class Main {
 				// Buscar Veiculo por Chassi
 				break;
 			case 6:
-				Menu.listarEstoqueDeCarro(loja.getEstoqueCarros());
+				Menu.listarEstoqueDeCarro(loja);
 				break;
 			case 7:
-				Menu.listarEstoqueDeMoto(loja.getEstoqueMotocicletas());
+				Menu.listarEstoqueDeMoto(loja);
 				break;
 			default:
 				break;

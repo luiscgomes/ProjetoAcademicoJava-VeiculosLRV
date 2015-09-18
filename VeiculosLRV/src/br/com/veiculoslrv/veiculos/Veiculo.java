@@ -19,12 +19,12 @@ public class Veiculo implements Serializable {
 		this.especificacao = especificacao;
 	}
 
-	public Especificacao getEspecificacao() {
-		return this.especificacao;
+	public Map<Atributo, String> getEspecificacao() {
+		return this.especificacao.getEspecificacoes();
 	}
 
-	public void setEspecificacao(Especificacao especificao) {
-		this.especificacao = especificao; 
+	public void setEspecificacao(Map<Atributo, String> especificacoes) {
+		this.especificacao.setEspecificacoes(especificacoes); 
 	}
 
 	public TipoVeiculo getTipoVeiculo() {

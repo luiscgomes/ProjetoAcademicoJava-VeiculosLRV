@@ -3,7 +3,7 @@ package br.com.veiculoslrv.loja;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.veiculoslrv.execucao.Motocicleta;
+
 import br.com.veiculoslrv.util.ArquivoUtil;
 import br.com.veiculoslrv.veiculo.atributos.Atributo;
 import br.com.veiculoslrv.veiculos.Especificacao;
@@ -26,9 +26,9 @@ public class Loja {
 		estoqueVeiculos.add(veiculo);
 	}	
 	
-	public Veiculo pesquisarVeiculo(Especificacao especificacao) {
+	public Veiculo pesquisarVeiculo(Veiculo veiculoPesq) {
 		for (Veiculo veiculo : estoqueVeiculos) {
-			if (veiculo.getEspecificacao().equals(especificacao)) {
+			if (veiculo.getEspecificacao().equals(veiculoPesq.getEspecificacao())) {
 				return veiculo;
 			}
 		}
@@ -46,7 +46,7 @@ public class Loja {
 	
 	private Veiculo buscarVeiculo(String chassi, TipoVeiculo tipoVeiculo) {
 		for (Veiculo veiculo : estoqueVeiculos) {
-			if ((veiculo.getChassi() == chassi) && (veiculo.getEspecificacao().getTipoVeiculo() == tipoVeiculo)) {
+			if ((veiculo.getChassi() == chassi) && (veiculo.getTipoVeiculo() == tipoVeiculo)) {
 				return veiculo;
 			}
 		}
@@ -69,7 +69,7 @@ public class Loja {
 			System.out.println("****Estoque Vazio****\n");
 		} else {
 			for (Veiculo veiculo : estoqueVeiculos) {
-				if (veiculo.getEspecificacao().getTipoVeiculo() == tipoVeiculo) {				
+				if (veiculo.getTipoVeiculo() == tipoVeiculo) {				
 					System.out.println("*********************************\n");
 					System.out.println("Chassi: " + veiculo.getChassi());
 					System.out.println("Montadora: " + veiculo.getMontadora());
@@ -77,8 +77,8 @@ public class Loja {
 					System.out.println("Tipo: " + veiculo.getTipo());
 					System.out.println("Cor: " + veiculo.getCor());
 					System.out.println("Preco: " + veiculo.getPreco());
-					for (Atributo atributo : veiculo.getEspecificacao().getEspecificacoes().keySet()) {
-						System.out.println(atributo + ": " + veiculo.getEspecificacao().getEspecificacoes().get(atributo));
+					for (Atributo atributo : veiculo.getEspecificacao().keySet()) {
+						System.out.println(atributo + ": " + veiculo.getEspecificacao().get(atributo));
 					}
 					System.out.println("\n*********************************");								
 				}			

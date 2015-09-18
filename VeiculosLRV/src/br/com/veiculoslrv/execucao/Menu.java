@@ -1,17 +1,15 @@
 package br.com.veiculoslrv.execucao;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.InputMismatchException;
-import java.util.Scanner;
 import java.util.Map;
+import java.util.Scanner;
 
 import br.com.veiculoslrv.fabrica.FabricaVeiculo;
 import br.com.veiculoslrv.loja.Loja;
 import br.com.veiculoslrv.veiculo.atributos.Atributo;
 import br.com.veiculoslrv.veiculo.atributos.CarroAtributo;
 import br.com.veiculoslrv.veiculo.atributos.MotoAtributo;
-import br.com.veiculoslrv.veiculos.Especificacao;
 import br.com.veiculoslrv.veiculos.TipoVeiculo;
 import br.com.veiculoslrv.veiculos.Veiculo;
 
@@ -55,7 +53,7 @@ public final class Menu {
 		return -1;
 	}
 
-	public static Veiculo adicionarCarro(Loja loja) {
+	public static Veiculo adicionarCarro() {
 		Veiculo carro = FabricaVeiculo.criarVeiculo(TipoVeiculo.carro);
 		Map<Atributo, String> especificacoes = new HashMap<Atributo, String>();
 		Scanner ler = new Scanner(System.in);
@@ -63,9 +61,7 @@ public final class Menu {
 			System.out.println("**** Adicionar Carro *****\n");
 
 			carro = recuperaDadosCarro(carro, especificacoes);
-			
-			loja.AdicionarVeiculo(carro);
-			
+
 			return carro;
 		} catch (InputMismatchException e) {
 			erroMenu("Informe o valor correto");
@@ -73,17 +69,15 @@ public final class Menu {
 		}
 
 	}
-	
-	public static Veiculo adicionarMoto(Loja loja) {
+
+	public static Veiculo adicionarMoto() {
 		Veiculo moto = FabricaVeiculo.criarVeiculo(TipoVeiculo.motocicleta);
 		Map<Atributo, String> especificacoes = new HashMap<Atributo, String>();
-		
+
 		try {
-			System.out.println("**** Adicionar Moto *****");	
+			System.out.println("**** Adicionar Moto *****");
 
 			moto = recuperaDadosMoto(moto, especificacoes);
-						
-			loja.AdicionarVeiculo(moto);
 
 			return moto;
 		} catch (InputMismatchException e) {
@@ -92,36 +86,36 @@ public final class Menu {
 		}
 
 	}
-	
+
 	public static Veiculo pesquisaCarro(Loja loja) {
-		Veiculo carro = FabricaVeiculo.criarVeiculo(TipoVeiculo.carro);		
+		Veiculo carro = FabricaVeiculo.criarVeiculo(TipoVeiculo.carro);
 		Map<Atributo, String> especificacoes = new HashMap<Atributo, String>();
-		
+
 		carro = recuperaDadosCarro(carro, especificacoes);
-		
-		return loja.pesquisarVeiculo(carro.getEspecificacao());
+
+		return loja.pesquisarVeiculo(carro);
 	}
-	
+
 	public static Veiculo pesquisaMoto(Loja loja) {
-		Veiculo moto = FabricaVeiculo.criarVeiculo(TipoVeiculo.motocicleta);		
+		Veiculo moto = FabricaVeiculo.criarVeiculo(TipoVeiculo.motocicleta);
 		Map<Atributo, String> especificacoes = new HashMap<Atributo, String>();
-		
+
 		moto = recuperaDadosCarro(moto, especificacoes);
-		
-		return loja.pesquisarVeiculo(moto.getEspecificacao());
+
+		return loja.pesquisarVeiculo(moto);
 	}
-	
+
 	public static void listarEstoqueDeCarro(Loja loja) {
 		loja.listarEstoquedeCarros();
 	}
-	
+
 	public static void listarEstoqueDeMoto(Loja loja) {
 		loja.listarEstoquedeMotocicletas();
 	}
-	
+
 	private static Veiculo recuperaDados(Veiculo veiculo) {
 		Scanner ler = new Scanner(System.in);
-		
+
 		System.out.println("Informa o Chassi: ");
 		veiculo.setChassi(ler.nextLine());
 
@@ -134,44 +128,44 @@ public final class Menu {
 		System.out.println("Informa o Tipo: ");
 		veiculo.setTipo(ler.nextLine());
 
-		System.out.println("Informa a Por: ");
+		System.out.println("Informa a Cor: ");
 		veiculo.setCor(ler.nextLine());
 
 		System.out.println("Informa o Preco: ");
 		veiculo.setPreco(ler.nextFloat());
-		
+
 		return veiculo;
 	}
-	
+
 	private static Veiculo recuperaDadosCarro(Veiculo carro, Map<Atributo, String> especificacoes) {
 		Scanner ler = new Scanner(System.in);
-		
+
 		carro = recuperaDados(carro);
-		
+
 		System.out.println("Informa o Cambio: ");
-		especificacoes.put(CarroAtributo.Cambio, String.valueOf(ler.nextInt()));
+		especificacoes.put(CarroAtributo.Cambio, String.valueOf(ler.nextLine()));
 
 		System.out.println("Informa a Motorizacao: ");
 		especificacoes.put(CarroAtributo.Motorizacao, ler.nextLine());
 
-		carro.getEspecificacao().setEspecificacoes(especificacoes);
-		
+		carro.setEspecificacao(especificacoes);
+
 		return carro;
 	}
-	
+
 	private static Veiculo recuperaDadosMoto(Veiculo moto, Map<Atributo, String> especificacoes) {
 		Scanner ler = new Scanner(System.in);
-		
+
 		moto = recuperaDados(moto);
-	
+
 		System.out.println("Informa a Cilindrada: ");
-		especificacoes.put(MotoAtributo.Cilindrada, String.valueOf(ler.nextInt()));
+		especificacoes.put(MotoAtributo.Cilindrada, String.valueOf(ler.nextLine()));
 
 		System.out.println("Informa a Capacidade do Tanque: ");
 		especificacoes.put(MotoAtributo.CapacidadeTanque, String.valueOf(ler.nextInt()));
-		
-		moto.getEspecificacao().setEspecificacoes(especificacoes);
-		
+
+		moto.setEspecificacao(especificacoes);
+
 		return moto;
 	}
 }
