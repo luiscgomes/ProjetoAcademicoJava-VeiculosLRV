@@ -56,7 +56,6 @@ public final class Menu {
 	public static Veiculo adicionarCarro() {
 		Veiculo carro = FabricaVeiculo.criarVeiculo(TipoVeiculo.carro);
 		Map<Atributo, String> especificacoes = new HashMap<Atributo, String>();
-		Scanner ler = new Scanner(System.in);
 		try {
 			System.out.println("**** Adicionar Carro *****\n");
 
@@ -138,9 +137,9 @@ public final class Menu {
 	}
 
 	private static Veiculo recuperaDadosCarro(Veiculo carro, Map<Atributo, String> especificacoes) {
-		Scanner ler = new Scanner(System.in);
 
 		carro = recuperaDados(carro);
+		Scanner ler = new Scanner(System.in);
 
 		System.out.println("Informa o Cambio: ");
 		especificacoes.put(CarroAtributo.Cambio, String.valueOf(ler.nextLine()));
@@ -154,15 +153,15 @@ public final class Menu {
 	}
 
 	private static Veiculo recuperaDadosMoto(Veiculo moto, Map<Atributo, String> especificacoes) {
-		Scanner ler = new Scanner(System.in);
 
 		moto = recuperaDados(moto);
+		Scanner ler = new Scanner(System.in);
 
 		System.out.println("Informa a Cilindrada: ");
 		especificacoes.put(MotoAtributo.Cilindrada, String.valueOf(ler.nextLine()));
 
 		System.out.println("Informa a Capacidade do Tanque: ");
-		especificacoes.put(MotoAtributo.CapacidadeTanque, String.valueOf(ler.nextInt()));
+		especificacoes.put(MotoAtributo.CapacidadeTanque, String.valueOf(ler.nextLine()));
 
 		moto.setEspecificacao(especificacoes);
 
