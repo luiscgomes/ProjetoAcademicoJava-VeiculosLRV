@@ -34,6 +34,7 @@ public class Main {
 				break;
 			case 5:
 				// Buscar Veiculo por Chassi
+				Menu.pesquisarVeiculoPorChassi(loja);
 				break;
 			case 6:
 				Menu.listarEstoqueDeCarro(loja);

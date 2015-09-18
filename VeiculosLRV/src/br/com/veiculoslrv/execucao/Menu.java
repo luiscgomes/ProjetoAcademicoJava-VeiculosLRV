@@ -167,4 +167,19 @@ public final class Menu {
 
 		return moto;
 	}
+
+	public static void pesquisarVeiculoPorChassi(Loja loja) {
+		Scanner ler = new Scanner(System.in);
+		String chassi;
+		System.out.println("Informe o chassi");
+		chassi = ler.nextLine();
+		Veiculo veiculo = loja.buscarVeiculo(chassi);
+		if(veiculo==null){
+			System.out.println("Veiculo não encontrado");			
+		}else{
+			loja.informacoesVeiculo(veiculo);
+		}
+		
+		
+	}
 }
