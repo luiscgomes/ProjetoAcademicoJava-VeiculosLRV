@@ -135,7 +135,7 @@ public final class Menu {
 		System.out.println("Informa o Preco: ");
 		veiculo.setPreco(ler.nextFloat());
 
-		ler.close();
+		//ler.close();
 
 		return veiculo;
 	}

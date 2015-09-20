@@ -21,7 +21,13 @@ public class Loja {
 	}
 
 	public void AdicionarVeiculo(Veiculo veiculo) {
-		estoqueVeiculos.add(veiculo);
+		Veiculo buscarChassi = buscarVeiculo(veiculo.getChassi());
+		if(buscarChassi == null){
+			estoqueVeiculos.add(veiculo);
+		}else{
+			throw new IllegalArgumentException("Já existe um veiculo com o chassi: "+buscarChassi.getChassi()+" !");
+		}
+		
 	}
 
 	public Veiculo pesquisarVeiculo(Veiculo veiculoPesq) {

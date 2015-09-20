@@ -51,9 +51,6 @@ public class FabricaVeiculoTest {
 
 		Veiculo moto = FabricaVeiculo.criarVeiculo(TipoVeiculo.motocicleta);
 
-		// moto.setAtributo(MotoAtributo.CapacidadeTanque, "50");
-		// moto.setAtributo(MotoAtributo.Cilindrada, "500");
-
 		HashMap<Atributo, String> especificacoes = new HashMap<Atributo, String>();
 		especificacoes.put(MotoAtributo.CapacidadeTanque, "50");
 		especificacoes.put(MotoAtributo.Cilindrada, "800");
@@ -64,9 +61,6 @@ public class FabricaVeiculoTest {
 
 		assertEquals("50", especificacoesMoto.get(MotoAtributo.CapacidadeTanque));
 		assertEquals("800", especificacoesMoto.get(MotoAtributo.Cilindrada));
-
-		// assertEquals("500", moto.getAtributo(MotoAtributo.Cilindrada));
-		// assertEquals("50", moto.getAtributo(MotoAtributo.CapacidadeTanque));
 
 	}
 }
