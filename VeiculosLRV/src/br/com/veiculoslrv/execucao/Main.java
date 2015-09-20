@@ -16,14 +16,22 @@ public class Main {
 				// Adicionar Carro
 				Veiculo carro = Menu.adicionarCarro();
 				if (carro != null) {
-					loja.AdicionarVeiculo(carro);
+					try {
+						loja.AdicionarVeiculo(carro);
+					} catch (IllegalArgumentException e) {
+						System.out.println(e.getMessage());
+					}
 				}
 				break;
 			case 2:
 				// Adicionar Moto
 				Veiculo moto = Menu.adicionarMoto();
 				if (moto != null) {
-					loja.AdicionarVeiculo(moto);
+					try {
+						loja.AdicionarVeiculo(moto);
+					} catch (IllegalArgumentException e) {
+						System.out.println(e.getMessage());
+					}
 				}
 				break;
 			case 3:

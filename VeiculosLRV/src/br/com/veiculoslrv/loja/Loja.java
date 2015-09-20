@@ -25,7 +25,7 @@ public class Loja {
 		if(buscarChassi == null){
 			estoqueVeiculos.add(veiculo);
 		}else{
-			throw new IllegalArgumentException("Já existe um veiculo com o chassi: "+buscarChassi.getChassi()+" !");
+			throw new IllegalArgumentException("Já existe um veiculo com o chassi: "+buscarChassi.getChassi());
 		}
 		
 	}
