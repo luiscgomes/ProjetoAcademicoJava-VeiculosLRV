@@ -5,7 +5,6 @@ import java.util.List;
 
 import br.com.veiculoslrv.util.ArquivoUtil;
 import br.com.veiculoslrv.veiculo.atributos.Atributo;
-import br.com.veiculoslrv.veiculos.Especificacao;
 import br.com.veiculoslrv.veiculos.TipoVeiculo;
 import br.com.veiculoslrv.veiculos.Veiculo;
 

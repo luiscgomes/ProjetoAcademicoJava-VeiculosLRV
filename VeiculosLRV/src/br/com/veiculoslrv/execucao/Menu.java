@@ -42,6 +42,8 @@ public final class Menu {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			return erroMenu("Erro desconhecido");
+		} finally {
+			ler.close();
 		}
 
 	}
@@ -133,6 +135,8 @@ public final class Menu {
 		System.out.println("Informa o Preco: ");
 		veiculo.setPreco(ler.nextFloat());
 
+		ler.close();
+
 		return veiculo;
 	}
 
@@ -148,6 +152,8 @@ public final class Menu {
 		especificacoes.put(CarroAtributo.Motorizacao, ler.nextLine());
 
 		carro.setEspecificacao(especificacoes);
+
+		ler.close();
 
 		return carro;
 	}
@@ -165,6 +171,7 @@ public final class Menu {
 
 		moto.setEspecificacao(especificacoes);
 
+		ler.close();
 		return moto;
 	}
 
@@ -173,13 +180,13 @@ public final class Menu {
 		String chassi;
 		System.out.println("Informe o chassi");
 		chassi = ler.nextLine();
+		ler.close();
 		Veiculo veiculo = loja.buscarVeiculo(chassi);
-		if(veiculo==null){
-			System.out.println("Veiculo não encontrado");			
-		}else{
+		if (veiculo == null) {
+			System.out.println("Veiculo não encontrado");
+		} else {
 			loja.informacoesVeiculo(veiculo);
 		}
-		
-		
+
 	}
 }

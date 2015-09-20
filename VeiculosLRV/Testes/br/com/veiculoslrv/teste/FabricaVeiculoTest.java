@@ -1,6 +1,6 @@
 package br.com.veiculoslrv.teste;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;
 
@@ -17,9 +17,8 @@ public class FabricaVeiculoTest {
 
 	@Test
 	public void deveUltilizarAFabricaParaCriarUmCarro() {
-		FabricaVeiculo fabrica = new FabricaVeiculo();
 
-		Veiculo carro = fabrica.criarVeiculo(TipoVeiculo.carro);
+		Veiculo carro = FabricaVeiculo.criarVeiculo(TipoVeiculo.carro);
 
 		HashMap<Atributo, String> especificacoes = new HashMap<Atributo, String>();
 		especificacoes.put(CarroAtributo.Motorizacao, "4x4");
@@ -49,24 +48,23 @@ public class FabricaVeiculoTest {
 
 	@Test
 	public void deveUltilizarAFabricaParaCriarUmaMoto() {
-		FabricaVeiculo fabrica = new FabricaVeiculo();
 
-		Veiculo moto = fabrica.criarVeiculo(TipoVeiculo.motocicleta);
+		Veiculo moto = FabricaVeiculo.criarVeiculo(TipoVeiculo.motocicleta);
 
 		// moto.setAtributo(MotoAtributo.CapacidadeTanque, "50");
 		// moto.setAtributo(MotoAtributo.Cilindrada, "500");
-		
+
 		HashMap<Atributo, String> especificacoes = new HashMap<Atributo, String>();
 		especificacoes.put(MotoAtributo.CapacidadeTanque, "50");
 		especificacoes.put(MotoAtributo.Cilindrada, "800");
 		moto.setEspecificacao(especificacoes);
-		
+
 		HashMap<Atributo, String> especificacoesMoto = new HashMap<Atributo, String>();
 		especificacoesMoto = (HashMap<Atributo, String>) moto.getEspecificacao();
 
 		assertEquals("50", especificacoesMoto.get(MotoAtributo.CapacidadeTanque));
 		assertEquals("800", especificacoesMoto.get(MotoAtributo.Cilindrada));
-		
+
 		// assertEquals("500", moto.getAtributo(MotoAtributo.Cilindrada));
 		// assertEquals("50", moto.getAtributo(MotoAtributo.CapacidadeTanque));
 
