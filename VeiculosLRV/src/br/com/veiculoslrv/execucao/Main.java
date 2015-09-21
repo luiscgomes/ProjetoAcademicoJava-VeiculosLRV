@@ -35,10 +35,12 @@ public class Main {
 				}
 				break;
 			case 3:
-				// Buscar Carro
+				// Buscar carro				
+				Menu.buscarCarro(loja);
 				break;
 			case 4:
 				// Buscar Moto
+				Menu.buscarMoto(loja);
 				break;
 			case 5:
 				// Buscar Veiculo por Chassi

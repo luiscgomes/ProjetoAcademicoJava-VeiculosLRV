@@ -85,6 +85,24 @@ public final class Menu {
 		}
 
 	}
+	
+	public static Veiculo buscarCarro(Loja loja) {
+		Veiculo carro = FabricaVeiculo.criarVeiculo(TipoVeiculo.carro);
+		Map<Atributo, String> especificacoes = new HashMap<Atributo, String>();
+		
+		carro = recuperaDadosCarro(carro, especificacoes);
+		
+		return loja.pesquisarVeiculo(carro.getEspecificacao());
+	}
+	
+	public static Veiculo buscarMoto(Loja loja) {
+		Veiculo moto = FabricaVeiculo.criarVeiculo(TipoVeiculo.motocicleta);
+		Map<Atributo, String> especificacoes = new HashMap<Atributo, String>();
+		
+		moto = recuperaDadosMoto(moto, especificacoes);
+		
+		return loja.pesquisarVeiculo(moto.getEspecificacao());
+	}
 
 	public static Veiculo pesquisaCarro(Loja loja) {
 		Veiculo carro = FabricaVeiculo.criarVeiculo(TipoVeiculo.carro);
