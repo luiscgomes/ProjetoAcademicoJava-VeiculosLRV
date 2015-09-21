@@ -23,7 +23,7 @@ public class FabricaVeiculoTest {
 		HashMap<Atributo, String> especificacoes = new HashMap<Atributo, String>();
 		especificacoes.put(CarroAtributo.Motorizacao, "4x4");
 		especificacoes.put(CarroAtributo.Cambio, "Automatico");
-		carro.setEspecificacao(especificacoes);
+		carro.setEspecificacoes(especificacoes);
 
 		carro.setModelo("HBS");
 		carro.setChassi("12323sd");
@@ -33,7 +33,7 @@ public class FabricaVeiculoTest {
 		carro.setTipo("Sedan");
 
 		HashMap<Atributo, String> especificacoesCarro = new HashMap<Atributo, String>();
-		especificacoesCarro = (HashMap<Atributo, String>) carro.getEspecificacao();
+		especificacoesCarro = (HashMap<Atributo, String>) carro.getEspecificacoes();
 
 		assertEquals("4x4", especificacoesCarro.get(CarroAtributo.Motorizacao));
 		assertEquals("Automatico", especificacoesCarro.get(CarroAtributo.Cambio));
@@ -54,10 +54,10 @@ public class FabricaVeiculoTest {
 		HashMap<Atributo, String> especificacoes = new HashMap<Atributo, String>();
 		especificacoes.put(MotoAtributo.CapacidadeTanque, "50");
 		especificacoes.put(MotoAtributo.Cilindrada, "800");
-		moto.setEspecificacao(especificacoes);
+		moto.setEspecificacoes(especificacoes);
 
 		HashMap<Atributo, String> especificacoesMoto = new HashMap<Atributo, String>();
-		especificacoesMoto = (HashMap<Atributo, String>) moto.getEspecificacao();
+		especificacoesMoto = (HashMap<Atributo, String>) moto.getEspecificacoes();
 
 		assertEquals("50", especificacoesMoto.get(MotoAtributo.CapacidadeTanque));
 		assertEquals("800", especificacoesMoto.get(MotoAtributo.Cilindrada));

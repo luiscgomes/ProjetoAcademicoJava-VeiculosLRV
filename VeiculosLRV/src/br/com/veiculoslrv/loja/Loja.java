@@ -30,14 +30,22 @@ public class Loja {
 		}
 		
 	}
-
-	public Veiculo pesquisarVeiculo(Especificacao especificacao) {
+	
+	public Veiculo pesquisarVeiculo(Veiculo veiculoPesq) {
 		for (Veiculo veiculo : estoqueVeiculos) {
-			if (veiculo.getEspecificacao().equals(especificacao) {
+			if (veiculo.getEspecificacao().equals(veiculoPesq.getEspecificacao())) {
 				return veiculo;
 			}
 		}
+		return null;
+	}
 
+	public Veiculo pesquisarVeiculo(Especificacao especificacao) {
+		for (Veiculo veiculo : estoqueVeiculos) {
+			if (veiculo.getEspecificacao().equals(especificacao)) {
+				return veiculo;
+			}
+		}
 		return null;
 	}
 
@@ -90,8 +98,8 @@ public class Loja {
 		System.out.println("Tipo: " + veiculo.getTipo());
 		System.out.println("Cor: " + veiculo.getCor());
 		System.out.println("Preco: " + veiculo.getPreco());
-		for (Atributo atributo : veiculo.getEspecificacao().keySet()) {
-			System.out.println(atributo + ": " + veiculo.getEspecificacao().get(atributo));
+		for (Atributo atributo : veiculo.getEspecificacoes().keySet()) {
+			System.out.println(atributo + ": " + veiculo.getEspecificacoes().get(atributo));
 		}
 		System.out.println("\n*********************************");
 		

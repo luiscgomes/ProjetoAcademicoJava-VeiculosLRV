@@ -42,7 +42,7 @@ public final class Menu {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			return erroMenu("Erro desconhecido");
-		} 
+		}
 
 	}
 
@@ -63,7 +63,7 @@ public final class Menu {
 
 			return carro;
 		} catch (InputMismatchException e) {
-			erroMenu("Informe o valor correto");
+			erroMenu("Informe um valor correto");
 			return null;
 		}
 
@@ -80,28 +80,37 @@ public final class Menu {
 
 			return moto;
 		} catch (InputMismatchException e) {
-			erroMenu("Informe o valor correto");
+			erroMenu("Informe um valor correto");
 			return null;
 		}
 
 	}
-	
-	public static Veiculo buscarCarro(Loja loja) {
+
+	public static void buscarCarro(Loja loja) {
 		Veiculo carro = FabricaVeiculo.criarVeiculo(TipoVeiculo.carro);
 		Map<Atributo, String> especificacoes = new HashMap<Atributo, String>();
-		
-		carro = recuperaDadosCarro(carro, especificacoes);
-		
-		return loja.pesquisarVeiculo(carro.getEspecificacao());
+
+		carro = recuperarAtributosCarro(carro, especificacoes);
+
+		carro = loja.pesquisarVeiculo(carro.getEspecificacao());
+		if (carro == null) {
+			System.out.println("Veiculo não encontrado");
+		} else {
+			loja.informacoesVeiculo(carro);
+		}
 	}
-	
-	public static Veiculo buscarMoto(Loja loja) {
+
+	public static void buscarMoto(Loja loja) {
 		Veiculo moto = FabricaVeiculo.criarVeiculo(TipoVeiculo.motocicleta);
 		Map<Atributo, String> especificacoes = new HashMap<Atributo, String>();
-		
-		moto = recuperaDadosMoto(moto, especificacoes);
-		
-		return loja.pesquisarVeiculo(moto.getEspecificacao());
+
+		moto = recuperarAtributosMoto(moto, especificacoes);
+		moto = loja.pesquisarVeiculo(moto.getEspecificacao());
+		if (moto == null) {
+			System.out.println("Veiculo não encontrado");
+		} else {
+			loja.informacoesVeiculo(moto);
+		}
 	}
 
 	public static Veiculo pesquisaCarro(Loja loja) {
@@ -132,7 +141,7 @@ public final class Menu {
 
 	private static Veiculo recuperaDados(Veiculo veiculo) {
 		Scanner ler = new Scanner(System.in);
-		
+		float preco = 0;
 		System.out.println("Informa o Chassi: ");
 		veiculo.setChassi(ler.nextLine());
 
@@ -149,45 +158,49 @@ public final class Menu {
 		veiculo.setCor(ler.nextLine());
 
 		System.out.println("Informa o Preco: ");
-		veiculo.setPreco(ler.nextFloat());
-		
-		
+		preco = ler.nextFloat();
+		while (preco < 1) {
+			System.out.println("Preço não pode ser menor que zero!");
+			System.out.println("Informa o Preco: ");
+			preco = ler.nextFloat();
+		}
+		veiculo.setPreco(preco);
 
 		return veiculo;
+
 	}
 
 	private static Veiculo recuperaDadosCarro(Veiculo carro, Map<Atributo, String> especificacoes) {
-
 		carro = recuperaDados(carro);
-		Scanner ler = new Scanner(System.in);
+		return recuperarAtributosCarro(carro, especificacoes);
+	}
 
+	private static Veiculo recuperarAtributosCarro(Veiculo carro, Map<Atributo, String> especificacoes) {
+		Scanner ler = new Scanner(System.in);
 		System.out.println("Informa o Cambio: ");
 		especificacoes.put(CarroAtributo.Cambio, String.valueOf(ler.nextLine()));
-
 		System.out.println("Informa a Motorizacao: ");
 		especificacoes.put(CarroAtributo.Motorizacao, ler.nextLine());
-
-		carro.setEspecificacao(especificacoes);
-
-		
-
+		carro.setEspecificacoes(especificacoes);
 		return carro;
 	}
 
 	private static Veiculo recuperaDadosMoto(Veiculo moto, Map<Atributo, String> especificacoes) {
 
 		moto = recuperaDados(moto);
-		Scanner ler = new Scanner(System.in);
+		return recuperarAtributosMoto(moto, especificacoes);
 
+	}
+
+	private static Veiculo recuperarAtributosMoto(Veiculo moto, Map<Atributo, String> especificacoes) {
+		Scanner ler = new Scanner(System.in);
 		System.out.println("Informa a Cilindrada: ");
 		especificacoes.put(MotoAtributo.Cilindrada, String.valueOf(ler.nextLine()));
 
 		System.out.println("Informa a Capacidade do Tanque: ");
 		especificacoes.put(MotoAtributo.CapacidadeTanque, String.valueOf(ler.nextLine()));
 
-		moto.setEspecificacao(especificacoes);
-
-		
+		moto.setEspecificacoes(especificacoes);
 		return moto;
 	}
 
@@ -196,7 +209,7 @@ public final class Menu {
 		String chassi;
 		System.out.println("Informe o chassi");
 		chassi = ler.nextLine();
-		
+
 		Veiculo veiculo = loja.buscarVeiculo(chassi);
 		if (veiculo == null) {
 			System.out.println("Veiculo não encontrado");
